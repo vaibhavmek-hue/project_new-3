@@ -1,0 +1,210 @@
+/* Custom CSS Colors & Theme Setup */
+:root {
+  --bg-main: #0a0b10;
+  --card-bg: #11131e;
+  --form-card-bg: #161825;
+  --input-bg: #0d0e17;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --accent-purple: #6d3bf5;
+  --accent-blue: #12c2e9;
+  --accent-pink: #ff5fa2;
+  --text-muted: #8e95a5;
+}
+
+@keyframes fadeInUpLogin {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Page Background */
+body {
+  background: radial-gradient(circle at 50% 0%, #1d1b38 0%, var(--bg-main) 70%);
+  color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Main Outer Container Card */
+.main-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  max-width: 1100px;
+  animation: fadeInUpLogin 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Left Hero Branding */
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #a78bfa, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title-underline {
+  width: 40px;
+  height: 4px;
+  background: var(--accent-purple);
+  border-radius: 2px;
+}
+
+/* Dashboard Visual Mockup */
+.mockup-card {
+  background-color: rgba(22, 24, 37, 0.9);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mockup-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(109, 59, 245, 0.25);
+}
+
+.stat-box {
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.stat-box:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-purple);
+}
+
+.extra-small {
+  font-size: 0.75rem;
+}
+
+/* Glowing Decorative Orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(30px);
+  z-index: 1;
+}
+
+.orb-1 {
+  width: 100px;
+  height: 100px;
+  background: rgba(139, 92, 246, 0.3);
+  top: -20px;
+  right: 10px;
+}
+
+.orb-2 {
+  width: 80px;
+  height: 80px;
+  background: rgba(59, 130, 246, 0.25);
+  bottom: -20px;
+  left: -20px;
+}
+
+/* Quotes */
+.quote-icon {
+  font-size: 1.75rem;
+  color: var(--accent-purple);
+}
+
+.text-purple {
+  color: #a78bfa;
+}
+
+/* Right Login Card */
+.login-card {
+  background-color: var(--form-card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.lock-avatar {
+  width: 65px;
+  height: 65px;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+}
+
+/* Form Custom Inputs */
+.custom-input,
+.custom-input-text {
+  background-color: var(--input-bg);
+  border-color: var(--border-color);
+  color: #fff;
+}
+
+.custom-input::placeholder {
+  color: #555b6e;
+  font-size: 0.875rem;
+}
+
+.custom-input:focus {
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 0 0.25rem rgba(139, 92, 246, 0.25);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Custom Checkbox */
+.custom-checkbox {
+  background-color: var(--input-bg);
+  border-color: var(--border-color);
+}
+
+.custom-checkbox:checked {
+  background-color: var(--accent-purple);
+  border-color: var(--accent-purple);
+}
+
+/* Gradient Submit Button */
+.btn-gradient {
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+  border: none;
+  color: #fff;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.btn-gradient:hover {
+  opacity: 0.95;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(109, 59, 245, 0.45);
+}
+
+/* Social Buttons */
+.social-btn {
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.social-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-color: var(--accent-purple);
+  transform: translateY(-2px);
+}
+
+.lock-avatar {
+  transition: transform 0.3s ease;
+}
+
+.lock-avatar:hover {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+/* Divider Line */
+.custom-hr {
+  border-color: var(--border-color);
+  opacity: 1;
+  margin: 0;
+}
+

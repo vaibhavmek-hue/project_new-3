@@ -1,0 +1,345 @@
+/* ===================================================================
+   RICH THEME OVERRIDE
+   Pure visual layer — colors, gradients, shadows, hover animations.
+   Loaded AFTER core.css / theme-default.css / demo.css so it can
+   safely override colors using the SAME classes already in the
+   markup. No HTML structure, IDs, names, or PHP logic are touched by
+   this file — it only changes how things look.
+=================================================================== */
+
+:root {
+  /* ---- Rich palette ---- */
+  --rt-primary: #6d3bf5;
+  --rt-primary-dark: #4c1fd6;
+  --rt-primary-light: #9a6dff;
+  --rt-secondary: #ff5fa2;
+  --rt-accent: #12c2e9;
+  --rt-success: #16c98d;
+  --rt-info: #12c2e9;
+  --rt-warning: #ffb020;
+  --rt-danger: #ff4d6d;
+
+  --rt-gradient-1: linear-gradient(135deg, #6d3bf5 0%, #b45cff 45%, #ff5fa2 100%);
+  --rt-gradient-2: linear-gradient(135deg, #12c2e9 0%, #6d3bf5 100%);
+  --rt-gradient-3: linear-gradient(135deg, #16c98d 0%, #12c2e9 100%);
+  --rt-gradient-warm: linear-gradient(135deg, #ff9966 0%, #ff5fa2 100%);
+
+  --rt-bg: #f3f2fb;
+  --rt-card-bg: #ffffff;
+  --rt-sidebar-bg: linear-gradient(180deg, #1c123f 0%, #2c1867 55%, #3a1a7a 100%);
+  --rt-navbar-bg: rgba(255, 255, 255, 0.85);
+  --rt-shadow-soft: 0 6px 18px rgba(76, 31, 214, 0.08);
+  --rt-shadow-hover: 0 14px 30px rgba(76, 31, 214, 0.18);
+  --rt-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------------------------------------------------------------
+   Global page background + smooth transitions everywhere
+--------------------------------------------------------------- */
+body {
+  background: var(--rt-bg) !important;
+}
+
+a,
+.btn,
+.card,
+.menu-link,
+.menu-icon,
+.nav-link,
+.dropdown-item,
+.form-control,
+.form-select,
+.badge,
+.avatar img,
+.table tbody tr,
+.btn i,
+.card .bx,
+.card .fa-solid,
+.stat-box,
+input,
+textarea,
+select {
+  transition: all 0.25s var(--rt-ease);
+}
+
+/* ---------------------------------------------------------------
+   Buttons — richer gradients + lift/glow on hover
+--------------------------------------------------------------- */
+.btn-primary {
+  background: var(--rt-gradient-1) !important;
+  border-color: var(--rt-primary) !important;
+  box-shadow: 0 4px 14px rgba(109, 59, 245, 0.35) !important;
+}
+.btn-primary:hover,
+.btn-check:focus + .btn-primary,
+.btn-primary:focus {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(109, 59, 245, 0.45) !important;
+  filter: brightness(1.05);
+}
+.btn-primary:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.btn-success { background: var(--rt-gradient-3) !important; border-color: var(--rt-success) !important; }
+.btn-danger  { background: linear-gradient(135deg, #ff4d6d, #ff8a5c) !important; border-color: var(--rt-danger) !important; }
+.btn-warning { background: var(--rt-gradient-warm) !important; border-color: var(--rt-warning) !important; color: #fff !important; }
+.btn-info    { background: var(--rt-gradient-2) !important; border-color: var(--rt-info) !important; }
+
+.btn-success:hover, .btn-danger:hover, .btn-warning:hover, .btn-info:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.06);
+}
+
+.btn-outline-primary {
+  color: var(--rt-primary) !important;
+  border-color: var(--rt-primary) !important;
+}
+.btn-outline-primary:hover {
+  background: var(--rt-gradient-1) !important;
+  border-color: transparent !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(109, 59, 245, 0.35);
+}
+
+/* Generic button micro-interaction (ripple-less press feedback) */
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* ---------------------------------------------------------------
+   Text / background utility colors kept consistent with new palette
+--------------------------------------------------------------- */
+.text-primary { color: var(--rt-primary) !important; }
+.bg-primary   { background: var(--rt-gradient-1) !important; }
+.bg-label-primary { background-color: rgba(109, 59, 245, 0.12) !important; color: var(--rt-primary) !important; }
+.bg-label-success { background-color: rgba(22, 201, 141, 0.12) !important; color: var(--rt-success) !important; }
+.bg-label-danger  { background-color: rgba(255, 77, 109, 0.12) !important; color: var(--rt-danger) !important; }
+.bg-label-warning { background-color: rgba(255, 176, 32, 0.15) !important; color: #b3760e !important; }
+.bg-label-info    { background-color: rgba(18, 194, 233, 0.12) !important; color: #0f95b3 !important; }
+
+/* ---------------------------------------------------------------
+   Cards — soft shadow + lift on hover
+--------------------------------------------------------------- */
+.card {
+  background-color: var(--rt-card-bg);
+  border: 1px solid rgba(109, 59, 245, 0.08);
+  box-shadow: var(--rt-shadow-soft);
+  border-radius: 0.85rem;
+}
+.card:hover {
+  box-shadow: var(--rt-shadow-hover);
+  transform: translateY(-4px);
+  border-color: rgba(109, 59, 245, 0.18);
+}
+
+/* Stat / KPI style cards get a subtle top accent bar on hover */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: 0.85rem 0.85rem 0 0;
+  background: var(--rt-gradient-1);
+  opacity: 0;
+  transition: opacity 0.25s var(--rt-ease);
+}
+.card:hover::before {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------
+   Sidebar — rich gradient + animated active/hover states
+--------------------------------------------------------------- */
+.bg-menu-theme,
+#layout-menu.bg-menu-theme {
+  background: var(--rt-sidebar-bg) !important;
+}
+.bg-menu-theme .border-bottom {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+.bg-menu-theme .text-dark,
+.bg-menu-theme .fs-5.fw-bold {
+  color: #fff !important;
+}
+.bg-menu-theme .menu-link .text-primary,
+.bg-menu-theme .menu-link i.text-primary,
+.bg-menu-theme .menu-icon {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.menu-item .menu-link {
+  border-radius: 0.55rem;
+  margin: 0 0.4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sliding highlight on hover */
+.menu-item .menu-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(-100%);
+  transition: transform 0.3s var(--rt-ease);
+  border-radius: 0.55rem;
+}
+.menu-item .menu-link:hover::after {
+  transform: translateX(0);
+}
+.menu-item .menu-link:hover .menu-icon,
+.menu-item .menu-link:hover div {
+  color: #fff !important;
+  transform: translateX(3px);
+}
+.menu-item .menu-link:hover .menu-icon {
+  transform: scale(1.15);
+}
+
+/* Active menu item — glowing gradient pill */
+.menu-item.active .menu-link {
+  background: var(--rt-gradient-1) !important;
+  box-shadow: 0 6px 16px rgba(109, 59, 245, 0.45);
+}
+.menu-item.active .menu-link .menu-icon,
+.menu-item.active .menu-link div,
+.menu-item.active .menu-link .text-primary {
+  color: #fff !important;
+}
+
+/* Sidebar brand icon */
+.bg-menu-theme .bg-primary {
+  background: var(--rt-gradient-1) !important;
+  box-shadow: 0 4px 12px rgba(109, 59, 245, 0.4);
+}
+
+/* ---------------------------------------------------------------
+   Navbar — soft glass effect + interactive icons
+--------------------------------------------------------------- */
+.bg-navbar-theme {
+  background: var(--rt-navbar-bg) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 16px rgba(76, 31, 214, 0.08) !important;
+}
+.navbar .nav-link,
+.navbar .bx {
+  transition: color 0.2s var(--rt-ease), transform 0.2s var(--rt-ease);
+}
+.navbar .nav-item .nav-link:hover {
+  color: var(--rt-primary) !important;
+  transform: translateY(-1px);
+}
+.navbar .avatar img {
+  border: 2px solid transparent;
+  transition: border-color 0.25s var(--rt-ease), transform 0.25s var(--rt-ease);
+}
+.navbar .avatar:hover img {
+  border-color: var(--rt-primary-light);
+  transform: scale(1.08);
+}
+
+/* ---------------------------------------------------------------
+   Tables — animated row hover + rich header
+--------------------------------------------------------------- */
+.table thead th {
+  background: rgba(109, 59, 245, 0.06);
+  color: var(--rt-primary-dark);
+  font-weight: 600;
+  border-bottom: 2px solid rgba(109, 59, 245, 0.15);
+}
+.table tbody tr:hover {
+  background: rgba(109, 59, 245, 0.06) !important;
+  transform: scale(1.003);
+}
+.table-hover > tbody > tr:hover > * {
+  --bs-table-hover-bg: rgba(109, 59, 245, 0.07);
+}
+
+/* ---------------------------------------------------------------
+   Badges — gentle pop on hover
+--------------------------------------------------------------- */
+.badge {
+  transition: transform 0.2s var(--rt-ease), box-shadow 0.2s var(--rt-ease);
+}
+.badge:hover {
+  transform: translateY(-1px) scale(1.06);
+}
+
+/* ---------------------------------------------------------------
+   Form controls — richer focus state
+--------------------------------------------------------------- */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--rt-primary-light) !important;
+  box-shadow: 0 0 0 0.2rem rgba(109, 59, 245, 0.18) !important;
+}
+
+/* ---------------------------------------------------------------
+   Links & dropdown items
+--------------------------------------------------------------- */
+a:not(.btn):not(.menu-link):not(.nav-link) {
+  color: var(--rt-primary);
+}
+a:not(.btn):not(.menu-link):not(.nav-link):hover {
+  color: var(--rt-primary-dark);
+}
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: rgba(109, 59, 245, 0.08);
+  color: var(--rt-primary-dark);
+  transform: translateX(3px);
+}
+
+/* ---------------------------------------------------------------
+   Avatars / icon tiles used across pages (client cards, team images)
+--------------------------------------------------------------- */
+.avatar img,
+img.rounded-circle {
+  transition: transform 0.3s var(--rt-ease), box-shadow 0.3s var(--rt-ease);
+}
+.avatar:hover img,
+a:hover > img.rounded-circle {
+  transform: scale(1.07) rotate(1deg);
+  box-shadow: 0 6px 16px rgba(109, 59, 245, 0.3);
+}
+
+/* ---------------------------------------------------------------
+   Scrollbar accent (webkit)
+--------------------------------------------------------------- */
+::-webkit-scrollbar-thumb {
+  background: var(--rt-primary-light) !important;
+  border-radius: 10px;
+}
+
+/* ---------------------------------------------------------------
+   Subtle entrance animation for main content cards
+--------------------------------------------------------------- */
+@keyframes rtFadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.container-xxl .card {
+  animation: rtFadeInUp 0.45s var(--rt-ease) both;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Hide the scrollbar on scrollable table containers, while still
+   allowing horizontal scroll (drag / trackpad / shift+wheel) when
+   a table is wider than its container.
+--------------------------------------------------------------- */
+.table-responsive {
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* IE / legacy Edge */
+}
+.table-responsive::-webkit-scrollbar {
+  display: none;              /* Chrome, Safari, modern Edge */
+}

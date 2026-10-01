@@ -1,0 +1,30 @@
+<svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#0EA5E9"/>
+    </linearGradient>
+    <linearGradient id="srsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon: shield with gear/checkmark, representing "management" + reliability -->
+  <g transform="translate(20,30)">
+    <path d="M70 0 L135 22 L135 78 C135 118 105 148 70 165 C35 148 5 118 5 78 L5 22 Z"
+          fill="url(#iconGrad)"/>
+    <circle cx="70" cy="80" r="34" fill="none" stroke="white" stroke-width="7"/>
+    <path d="M56 80 L68 92 L92 64" fill="none" stroke="white" stroke-width="8"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="800">
+    <text x="185" y="105" font-size="58" fill="url(#srsGrad)" letter-spacing="2">SRS</text>
+    <text x="185" y="145" font-size="30" fill="#334155" letter-spacing="6">MANAGER</text>
+  </g>
+
+  <!-- Accent underline -->
+  <rect x="187" y="155" width="230" height="5" rx="2.5" fill="#0EA5E9"/>
+</svg>
