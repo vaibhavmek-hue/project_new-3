@@ -3,6 +3,7 @@ require_once 'common/auth_check.php';
 include 'db.php';
 $error = '';
 $success = '';
+
 // Allows "Add Project" links from a client's page (e.g. clientsdetail.php)
 // to pre-select that client, so the new project is connected immediately.
 $preselected_client_id = isset($_GET['client_id']) ? (int) $_GET['client_id'] : 0;

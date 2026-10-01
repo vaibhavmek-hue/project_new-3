@@ -67,13 +67,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   <body>
     <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-wrapper layout-content-navbar " >
       <div class="layout-container">
         <!-- Menu -->
 
          <?php include 'common/sidebar.php'; ?>
 
         <!-- / Menu -->
+        <!-- Layout container -->
 
         <!-- Layout container -->
         <div class="layout-page">
